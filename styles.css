@@ -111,6 +111,9 @@ strong {
 }
 
 footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
   margin-top: 3.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid #d9ddd7;
