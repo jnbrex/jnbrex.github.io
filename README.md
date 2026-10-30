@@ -52,11 +52,38 @@ Then visit <http://127.0.0.1:8000>. Press Ctrl+C in the terminal to stop the ser
 2. In the repository, open **Settings → Pages**.
 3. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
 4. Select **main** and **/(root)**, then click **Save**.
-5. Once deployment finishes, visit <https://jnbrex.github.io/>.
+5. Once deployment and the custom-domain setup below finish, visit <https://bohrer.ai/>.
 
 Later changes publish when you commit and push to `main`. The `.nojekyll` file
 tells GitHub Pages to serve the static files without a Jekyll build.
 See [GitHub's publishing instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+
+## Custom domain
+
+The root `CNAME` file configures `bohrer.ai` as the custom domain for this
+branch-published GitHub Pages site. Keep it when updating the website.
+
+To finish the DNS setup in Cloudflare:
+
+1. Open **bohrer.ai → DNS → Records → Import and Export**.
+2. Import [dns/bohrer.ai.txt](dns/bohrer.ai.txt). It contains four apex `A`
+   records, four apex `AAAA` records, and a `www` CNAME pointing to
+   `jnbrex.github.io`. All nine records are configured as **DNS only**.
+3. Open the repository's [Pages settings](https://github.com/jnbrex/jnbrex.github.io/settings/pages)
+   and confirm **Custom domain** is `bohrer.ai` and the DNS check succeeds.
+4. Enable **Enforce HTTPS** once GitHub's certificate is ready. GitHub notes
+   that this option can take up to 24 hours to become available.
+
+With DNS configured, GitHub Pages redirects `www.bohrer.ai` and the original
+`jnbrex.github.io` address to the custom domain.
+
+To verify domain ownership, open your account's [Pages settings](https://github.com/settings/pages),
+add `bohrer.ai`, and add the TXT record GitHub provides in Cloudflare. Then
+click **Verify** in GitHub and keep that TXT record.
+
+References: [GitHub custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site),
+[domain verification](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages),
+and [Cloudflare DNS imports](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/).
 
 ## Files
 
@@ -64,4 +91,6 @@ See [GitHub's publishing instructions](https://docs.github.com/en/pages/getting-
 - `styles.css`: Colors, typography, and responsive layout.
 - `profile.jpeg`: Your profile photo.
 - `.nojekyll`: Enables plain static-file publishing on GitHub Pages.
+- `CNAME`: Sets the GitHub Pages custom domain to `bohrer.ai`.
+- `dns/bohrer.ai.txt`: Cloudflare DNS import file for the custom domain.
 - `README.md`: Editing, preview, and publishing instructions.
