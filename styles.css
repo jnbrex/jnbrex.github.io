@@ -22,6 +22,27 @@ main {
   padding: clamp(3rem, 10vw, 7rem) 1.5rem 2.5rem;
 }
 
+.intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.intro-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-photo {
+  display: block;
+  order: 1;
+  flex-shrink: 0;
+  width: 10rem;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+
 h1,
 h2,
 h3,
@@ -118,4 +139,15 @@ footer {
   padding-top: 1.25rem;
   border-top: 1px solid #d9ddd7;
   font-size: 0.875rem;
+}
+
+@media (max-width: 40rem) {
+  .intro {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .profile-photo {
+    order: 0;
+  }
 }

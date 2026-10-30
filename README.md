@@ -18,6 +18,11 @@ Open [index.html](index.html) and replace the introductory paragraph between the
 To add another paragraph, add another `<p class="bio">...</p>` inside the bio
 comments. You can also customize the page's `<title>` and description in `<head>`.
 
+## Update your photo
+
+Replace `profile.jpeg` with your preferred portrait. A square image works best.
+The photo appears beside your bio on larger screens and above it on smaller screens.
+
 ## Publications
 
 The homepage links to [MaD-RL: Matching Distributions for Calibrating LLMs with
@@ -57,5 +62,6 @@ See [GitHub's publishing instructions](https://docs.github.com/en/pages/getting-
 
 - `index.html`: Your bio and publications.
 - `styles.css`: Colors, typography, and responsive layout.
+- `profile.jpeg`: Your profile photo.
 - `.nojekyll`: Enables plain static-file publishing on GitHub Pages.
 - `README.md`: Editing, preview, and publishing instructions.
